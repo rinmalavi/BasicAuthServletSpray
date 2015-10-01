@@ -1,0 +1,33 @@
+<web-app>
+
+    <listener>
+        <listener-class>spray.servlet.Initializer</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>SprayConnectorServlet</servlet-name>
+        <servlet-class>spray.servlet.Servlet30ConnectorServlet</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SprayConnectorServlet</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>Ping Realm</realm-name>
+    </login-config>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Admin Role</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>pingrole</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+</web-app>
